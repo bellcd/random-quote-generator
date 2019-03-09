@@ -36,11 +36,11 @@ class QuoteCard extends React.Component {
       this.setState({
       quoteText: quote.text,
       quoteAuthor: quote.author,
+      url: `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quote.text}  -- ${quote.author}`
 
     })
   }
 
-  // should separate out logic for getting new quote into a new function
   getNewQuote = () => {
     const num = Math.floor(Math.random() * 3);
     const quote = QUOTES[num]
@@ -49,7 +49,7 @@ class QuoteCard extends React.Component {
 
   // this is not working, running this function causes "Maximum update depth exceeded" error
   // componentDidUpdate(prevProps, prevState) {
-  //   const newUrl = `${this.state.url}{this.state.quoteText}  -- {this.state.quoteAuthor}`;
+  //   const newUrl = ;
   //
   //   if (prevState.url !== newUrl) {
   //     this.setState({
