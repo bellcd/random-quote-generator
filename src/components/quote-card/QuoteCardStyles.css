@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Ruda');
+
+.flex {
+  display: flex;
+}
+
+.quote-text {
+  font-size: 1.2rem;
+  display: block;
+  padding: 1rem;
+}
+
+.quote-author {
+  text-align: right;
+  display: block;
+}
+
+.quote-card {
+  max-width: 40rem;
+  padding: 1rem;
+  background-color: white;
+}
+
+body {
+  background-color: green;
+}

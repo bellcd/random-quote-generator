@@ -2,6 +2,7 @@ import React from 'react';
 import Quote from './../quote/Quote.jsx';
 import ChangeButton from './../change-button/ChangeButton.jsx';
 import Share from './../share/Share.jsx';
+import './QuoteCardStyles.css';
 
 const QUOTES = [{
     text: "All we have to decide is what to do with the time that is given us.",
@@ -32,8 +33,8 @@ class QuoteCard extends React.Component {
   }
 
   handleClick = () => {
-      const quote = this.getNewQuote();
-      this.setState({
+    const quote = this.getNewQuote();
+    this.setState({
       quoteText: quote.text,
       quoteAuthor: quote.author,
       url: `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quote.text}  -- ${quote.author}`
@@ -60,7 +61,7 @@ class QuoteCard extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="quote-card">
         <Quote quoteText={this.state.quoteText} quoteAuthor={this.state.quoteAuthor}/>
         <Share url={this.state.url} />
         <ChangeButton handleClick={this.handleClick} />
