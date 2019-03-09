@@ -20,6 +20,28 @@ const QUOTES = [{
   }
 ]
 
+const COLORS_DARK = [
+  "778899",
+  "808000",
+  "5F9EA0",
+  "00BFFF",
+  "FFA500",
+  "F4A460",
+  "B8860B",
+  "32CD32",
+  "FA8072",
+  "2E8B57",
+  "E9967A",
+  "008B8B",
+  "87CEEB",
+  "6A5ACD",
+  "DB7093",
+  "00008B",
+  "1E90FF",
+  "9ACD32",
+  "FF00FF"
+];
+
 class QuoteCard extends React.Component {
   constructor(props) {
     super(props);
@@ -27,19 +49,26 @@ class QuoteCard extends React.Component {
     this.state = {
       quoteText: "All we have to decide is what to do with the time that is given us.",
       quoteAuthor: "Gandalf - Lord Of The Rings",
-      url: "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="
+      url: "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=",
+      backgroundColor: ""
     };
 
   }
 
   handleClick = () => {
+    const color = `#${this.getNewColor()}`;
     const quote = this.getNewQuote();
+
     this.setState({
       quoteText: quote.text,
       quoteAuthor: quote.author,
-      url: `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quote.text}  -- ${quote.author}`
-
+      url: `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quote.text}  -- ${quote.author}`,
+      backgroundColor: color
     })
+  }
+
+  getNewColor = () => {
+    return COLORS_DARK[Math.floor(Math.random() * COLORS_DARK.length)];
   }
 
   getNewQuote = () => {
@@ -61,11 +90,10 @@ class QuoteCard extends React.Component {
 
   render() {
     return (
-      <div className="quote-card">
+      <div className="quote-card" style={{backgroundColor: this.state.backgroundColor}}>
         <Quote quoteText={this.state.quoteText} quoteAuthor={this.state.quoteAuthor}/>
         <Share url={this.state.url} />
         <ChangeButton handleClick={this.handleClick} />
-        <p>{this.state.url}</p>
       </div>
     );
   }
