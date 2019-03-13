@@ -18,9 +18,5 @@
 .quote-card {
   max-width: 40rem;
   padding: 1rem;
-  background-color: white;
-}
-
-body {
-  background-color: black;
+  opacity: 1;
 }

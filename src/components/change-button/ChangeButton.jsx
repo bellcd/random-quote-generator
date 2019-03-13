@@ -1,4 +1,5 @@
 import React from 'react';
+import "./change-button.css";
 
 const ChangeButton = (props) => {
   return (
