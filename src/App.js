@@ -67,12 +67,22 @@ class App extends Component {
     const quote = this.getNewQuote();
 
     this.setState({
-      quoteText: quote.text,
-      quoteAuthor: quote.author,
-      url: `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quote.text}  -- ${quote.author}`,
-      backgroundColor: color
-    })
+          quoteText: quote.text,
+          quoteAuthor: quote.author,
+          url: `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quote.text}  -- ${quote.author}`,
+          backgroundColor: color
+        })
   }
+
+
+  // // new quote is not returning from this particular fetch request ... why? something to do with CORS??
+  // getNewQuote = () => {
+  //   return fetch("https://shrouded-lake-76422.herokuapp.com/http://quotesondesign.com/wp-json/posts")
+  //     .then(response => response.json())
+  //     .then(jsonResponse => {
+  //       return jsonResponse[0];
+  //     })
+  // }
 
   getNewColor = () => {
     return COLORS_DARK[Math.floor(Math.random() * COLORS_DARK.length)];
