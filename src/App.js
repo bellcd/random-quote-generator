@@ -5,6 +5,7 @@ import './App.css';
 import QuoteCard from './components/quote-card/QuoteCard';
 import ChangeButton from './components/change-button/ChangeButton';
 
+
 const QUOTES = [{
     text: "All we have to decide is what to do with the time that is given us.",
     author: "Gandalf - Lord Of The Rings"
