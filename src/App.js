@@ -21,28 +21,6 @@ const QUOTES = [{
   }
 ]
 
-const COLORS_DARK = [
-  "778899",
-  "808000",
-  "5F9EA0",
-  "00BFFF",
-  "FFA500",
-  "F4A460",
-  "B8860B",
-  "32CD32",
-  "FA8072",
-  "2E8B57",
-  "E9967A",
-  "008B8B",
-  "87CEEB",
-  "6A5ACD",
-  "DB7093",
-  "00008B",
-  "1E90FF",
-  "9ACD32",
-  "FF00FF"
-];
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -56,14 +34,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const color = `#${this.getNewColor()}`;
+    const color = this.createRandomGradient();
     this.setState({
       backgroundColor: color
     })
   }
 
   handleClick = () => {
-    const color = `#${this.getNewColor()}`;
+    const color = this.createRandomGradient();
     const quote = this.getNewQuote();
 
     this.setState({
@@ -84,8 +62,33 @@ class App extends Component {
   //     })
   // }
 
-  getNewColor = () => {
-    return COLORS_DARK[Math.floor(Math.random() * COLORS_DARK.length)];
+  makeRandomColor = () => {
+    const hexCodeArr = [];
+    let hexOrNum;
+    const hex = ["a","b","c","d","e","f"];
+    let hexCodeStr;
+
+    for (let i = 0; i < 6; i++) {
+      // decide to calculate number or letter
+      hexOrNum = Math.floor((Math.random() * 2));
+      if (hexOrNum === 0) {                              // if number
+        hexCodeArr[i] = Math.floor((Math.random() * 10));
+      } else {                                           // if letter
+        const temp = (Math.floor((Math.random() * 6)));
+        hexCodeArr[i] = hex[temp];
+      }
+    }
+
+    hexCodeStr = hexCodeArr.join("");
+    hexCodeStr = "#" + hexCodeStr;
+    return hexCodeStr;
+  }
+
+  createRandomGradient = () => {
+    const randomColor1 = this.makeRandomColor();
+    const randomColor2 = this.makeRandomColor();
+    const num = Math.floor(Math.random() * 361);
+    return `linear-gradient(${num}deg, ${randomColor1}, ${randomColor2})`;
   }
 
   getNewQuote = () => {
@@ -97,7 +100,7 @@ class App extends Component {
   render() {
     return (
       <div class="flex main" style={{
-        backgroundColor: this.state.backgroundColor,
+        background: this.state.backgroundColor,
         height: "100%",
         width: "100%"
 
