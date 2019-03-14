@@ -5,7 +5,7 @@ import './QuoteCardStyles.css';
 
 const QuoteCard = (props) => {
     return (
-      <div className="quote-card" style={{border: "1px black dashed"}}>
+      <div className="quote-card">
         <Quote quoteText={props.quoteText} quoteAuthor={props.quoteAuthor}/>
         <Share url={props.url} />
       </div>
